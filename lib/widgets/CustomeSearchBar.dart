@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class CustomeSearchBar extends StatelessWidget {
@@ -12,7 +13,8 @@ class CustomeSearchBar extends StatelessWidget {
         height: 50,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: const Color.fromARGB(255,25, 25, 0), width: 1),
+            borderRadius: BorderRadius.circular(10),
             boxShadow: const [
               BoxShadow(
                 color: Colors.grey,
@@ -31,12 +33,16 @@ class CustomeSearchBar extends StatelessWidget {
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: 5, right: 5),
                     border: InputBorder.none,
+                    hintText: 'Search...',
+                    hintStyle: TextStyle(color: Color.fromARGB(255,25, 25, 0), fontSize: 15,)
                   ),
                   autocorrect: true,
+                  cursorColor: Color.fromARGB(255,25, 25, 0),
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  
                 ),
               ),
-              const Icon(Icons.search, size: 25),
+              Icon(Icons.search, size: 25, color: Color.fromARGB(255,25, 25, 0),),
             ],
           ),
         ),
