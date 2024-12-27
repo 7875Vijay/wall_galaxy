@@ -43,9 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body:Column(
           children: [
-            const CustomeSearchBar(),
+            CustomeSearchBar(),
             CategoryBar(),
             isLoading ? const CupertinoActivityIndicator(color: Color.fromARGB(255, 23, 93, 0), radius: 25,):
+            photos.length == 0? Center(child: Text('Ooops... result not found!'),) : 
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(5),

@@ -1,10 +1,13 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:wall_galaxy/views/search.dart';
 
 class CustomeSearchBar extends StatelessWidget {
-  const CustomeSearchBar({super.key});
+  CustomeSearchBar({super.key});
 
+  /* TextInputControllers */
+  TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -24,25 +27,32 @@ class CustomeSearchBar extends StatelessWidget {
               ),
             ],
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: _searchController,
+                  decoration: const InputDecoration(
                     contentPadding: EdgeInsets.only(left: 5, right: 5),
                     border: InputBorder.none,
                     hintText: 'Search...',
                     hintStyle: TextStyle(color: Color.fromARGB(255,25, 25, 0), fontSize: 15,)
                   ),
                   autocorrect: true,
-                  cursorColor: Color.fromARGB(255,25, 25, 0),
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  cursorColor: const Color.fromARGB(255,25, 25, 0),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   
                 ),
               ),
-              Icon(Icons.search, size: 25, color: Color.fromARGB(255,25, 25, 0),),
+              InkWell(
+                onTap: () {
+                  String query = _searchController.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen(searchQuery: query)));
+                },
+                child: const Icon(Icons.search, size: 25, color: Color.fromARGB(255,25, 25, 0),),
+              )
             ],
           ),
         ),
