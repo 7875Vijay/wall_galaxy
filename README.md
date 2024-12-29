@@ -1,4 +1,4 @@
-<h1 align="left">Hey 👋 What's up?<br>Presenting  <a src="https://drive.google.com/file/d/1VBU1leq6FqOKEQm0XlqtdzYyvHy-6fUS/view?usp=drive_link" style="text-decoration:none">🔥wall_galaxy🔥 </a> wallpaper app.</h1>
+<h1 align="left">Hey 👋 What's up?<br>Presenting🔥wall_galaxy🔥wallpaper app.</h1>
 
 ###
 
@@ -7,6 +7,7 @@
 ###
 
 <h2 align="left">🚀About  wall_galaxy</h2>
+<a src="https://drive.google.com/file/d/1VBU1leq6FqOKEQm0XlqtdzYyvHy-6fUS/view?usp=drive_link">Application is here! click here...</a>
 
 ###
 
