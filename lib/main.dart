@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wall_galaxy/views/home.dart';
+import 'package:wall_galaxy/views/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
       
       title: "Wall Galaxy",
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

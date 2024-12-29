@@ -24,6 +24,8 @@ flutter:
       fonts:
         - asset: assets/font/P_R.ttf
         - asset: assets/font/P_B.ttf
+  assets:
+    - assets/splash/splash.png
 
 flutter_launcher_icons:
   android: "launcher_icon"
