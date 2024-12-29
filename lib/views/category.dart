@@ -1,19 +1,48 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../controller/apiOper.dart';
+import '../model/PhotoModel.dart';
 import '../widgets/CustomeAppBar.dart';
+import '../widgets/GridViewForWallpapers.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  String name;
+  String url;
+  CategoryScreen({super.key, required this.name, required this.url});
 
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  late PhotoModel photoModel;
+  late List<Photos> photos = [];
+  bool isLoading = true;
+  @override
+  void initState() {
+    super.initState();
+    getCategoryWallpapers();
+  }
+
+  getCategoryWallpapers() async{
+    photoModel = await APIOperations.getSerchedWallpapers(widget.name);
+    photos = photoModel.photos;
+    if(photos.isNotEmpty){
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
         title: CustomeAppBar( wordOne:  "Wall", wordTwo:  "Galaxy"),
       ),
-      body: SingleChildScrollView( physics: const BouncingScrollPhysics(),
-        child: Column(
+      body:  Column(
           children: [
             Container(
               margin: const EdgeInsets.all(5),
@@ -23,25 +52,27 @@ class CategoryScreen extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.network('https://images.pexels.com/photos/358528/pexels-photo-358528.jpeg?auto=compress&cs=tinysrgb&w=600',
+                      child: Image.network(widget.url,
                       fit: BoxFit.fill,
                       width: MediaQuery.of(context).size.width,
                       ),
                     ),
-                    const Center(
+                    Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Category',
+                          const Text('Category',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
+                              fontFamily: 'MYPPR',
                             ),
                           ),
-                          Text('Maountains',
-                            style: TextStyle(
+                          Text(widget.name,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'MYPPR',
                               fontSize: 30,
                             ),
                           ),
@@ -52,37 +83,11 @@ class CategoryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.all(5),
-              
-              child: GridView.builder(
-                physics:const BouncingScrollPhysics(),
-                itemCount: 100,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5,
-                  mainAxisExtent: 400
-                ),
-                
-                itemBuilder: (context, index) {
-                  return SizedBox(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network('https://images.pexels.com/photos/5038431/pexels-photo-5038431.jpeg?auto=compress&cs=tinysrgb&w=600',
-                      fit: BoxFit.cover,
-                      ),
-                    ),
-                  );
-                },
-              ),
-
-            ),
+            
+            isLoading ? const Center( child: CupertinoActivityIndicator(color: Color.fromARGB(255, 23, 93, 0), radius: 25,)):
+            GridViewForWallpapers(photos: photos) 
           ],
         ),
-      ),
     );
   }
 }

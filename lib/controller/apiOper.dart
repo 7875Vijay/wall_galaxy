@@ -53,7 +53,7 @@ class APIOperations{
   }
   static Future<PhotoModel> getSerchedWallpapers(String query) async{
     String apiKey = 'T3ZCuoXIbngmRMk5iXcEXCt4GwlNhMFjoi74IMO4LBgBK0rrnYY7zQKF';
-    String apiUrl = 'https://api.pexels.com/v1/search?query=${query}&per_page=80';
+    String apiUrl = 'https://api.pexels.com/v1/search?query=$query&per_page=80';
     final response = await http.get(
       Uri.parse(apiUrl),
       headers: {

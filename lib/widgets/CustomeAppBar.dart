@@ -22,12 +22,14 @@ class CustomeAppBar extends StatelessWidget {
         style: const TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.bold,
+           fontFamily: 'MYPPR',
         ),
         children: [
 
           TextSpan(text: "$wordOne ",
           style: const TextStyle(
             color: Color.fromARGB(255, 23, 93, 0),
+           
           )),
           
           TextSpan(text: wordTwo, 

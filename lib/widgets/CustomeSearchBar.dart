@@ -7,17 +7,17 @@ class CustomeSearchBar extends StatelessWidget {
   CustomeSearchBar({super.key});
 
   /* TextInputControllers */
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.9,
+        width: MediaQuery.of(context).size.width * 0.97,
         height: 50,
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: const Color.fromARGB(255,25, 25, 0), width: 1),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(28),
             boxShadow: const [
               BoxShadow(
                 color: Colors.grey,
@@ -38,21 +38,32 @@ class CustomeSearchBar extends StatelessWidget {
                     contentPadding: EdgeInsets.only(left: 5, right: 5),
                     border: InputBorder.none,
                     hintText: 'Search...',
-                    hintStyle: TextStyle(color: Color.fromARGB(255,25, 25, 0), fontSize: 15,)
+                    hintStyle: TextStyle(color: Color.fromARGB(255,25, 25, 0), 
+                    fontSize: 15,
+                    fontFamily: 'MYPPR',
+                    )
                   ),
                   autocorrect: true,
                   cursorColor: const Color.fromARGB(255,25, 25, 0),
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 20),
                   
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  String query = _searchController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen(searchQuery: query)));
-                },
-                child: const Icon(Icons.search, size: 25, color: Color.fromARGB(255,25, 25, 0),),
-              )
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    String query = _searchController.text;
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen(searchQuery: query)));
+                  },
+                  child: const Icon(Icons.search, size: 25, color: Color.fromARGB(255,25, 25, 0),),
+                ),
+              ),
+              const SizedBox(width: 5,)
             ],
           ),
         ),
